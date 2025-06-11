@@ -4,11 +4,11 @@ import requests, re
 email_id = re.compile(r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+')
 emailList = []
 
-targetUrl = "https://www.walmart.ca/en"
+targetUrl = "https://www.eq3.com/"
 urlsToVisit = [targetUrl]
 seenUrls = []
 
-MAX_CRAWLS = 90
+MAX_CRAWLS = 50
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 \
@@ -23,7 +23,7 @@ def crawler():
     while urlsToVisit and crawlCount < MAX_CRAWLS:
 
         currentUrl = urlsToVisit.pop(0)
-        print(f"||| crawling {currentUrl}... ||| current list is:" )
+        print(f"||| crawling {currentUrl}... |||" )
 
         response = requests.get(currentUrl, headers=headers)
         if "text/html" not in response.headers.get("Content-Type", ""):
